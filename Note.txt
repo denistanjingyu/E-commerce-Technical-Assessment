@@ -1,0 +1,4 @@
+Question_2_Report_Views_Analytics.ipynb 
+---------------------------------------------------------------
+Platform used: Google Colab
+Remark: The code cells are collapsed by default, expand them by clicking on the cells.
