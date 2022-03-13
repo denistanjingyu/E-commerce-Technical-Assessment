@@ -63,26 +63,26 @@ b) For an average buyer, between 2021-Jan to 2021-May, how long did it take for 
 Query logic
 ------------
 1) Understanding the problem:
-	- Need a column representing the purchase order (1st purchase, 2nd purchase, ..., nth purchase)
+    - Need a column representing the purchase order (1st purchase, 2nd purchase, ..., nth purchase)
     - Need a column representing the average buyer delivery time based on the purchase order value
     
 2) Query structure:
-	- Create a Common Table Expression (CTE) with all the columns and a new column showing the purchase order of each row
+    - Create a Common Table Expression (CTE) with all the columns and a new column showing the purchase order of each row
     - Select the relevant columns from the CTE and group the results based on the purchase order
     Note: Subquery can be used inplace of CTE but with less readability
 
 3) Common Table Expression (CTE) query structure:
-	- Retrieve all columns from Delivery table and create a new column purchase_order
+    - Retrieve all columns from Delivery table and create a new column purchase_order
     - purchase_order shows the order that the buyer bought the package based on package_id (smaller id = earlier purchase)
-		- Can't use order_date to determine purchase order as multiple packages could be ordered on the same day
+    - Can't use order_date to determine purchase order as multiple packages could be ordered on the same day
     - Filter the rows between 2021-Jan to 2021-May (same assumptions as part a)
 
 4) Normal query structure:
-	- Group the rows based on the purchase_order
-	- Query from CTE
-		- purchase_order column
-		- average_buyer_delivery_time column
-			- Same logic as part a with DATEDIFF and STR_TO_DATE
+    - Group the rows based on the purchase_order
+    - Query from CTE
+	- purchase_order column
+	- average_buyer_delivery_time column
+	    - Same logic as part a with DATEDIFF and STR_TO_DATE
             - Average the days taken to deliver for each purchase_order group (1st purchase, 2nd purchase, ..., nth purchase)
 */
 
