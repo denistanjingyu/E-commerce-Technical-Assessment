@@ -15,7 +15,7 @@ Note: For Buyer_Tier table, composite primary key (if exists) = (buyer_id, ds)
     - Use inner join based on 2 conditions:
 	a) Same buyer_id (if join using only this might cause row explosion due to excessive matches; not primary key)
         b) Same ds and order_date (obtain buyer's tier during date of order for unique product)
-	- Left join could be used if buyers’ tier is calculated daily and ds exists for all possible dates to match Delivery table
+    - Left join could be used if buyers’ tier is calculated daily and ds exists for all possible dates to match Delivery table
     
 2) Filter the rows between 2021-Jan to 2021-May
     - Assume period from Jan 1 2021 to May 31 2021
@@ -24,8 +24,8 @@ Note: For Buyer_Tier table, composite primary key (if exists) = (buyer_id, ds)
         b) Latest order_date: 20210530 (May 30 2021)
         c) Earliest date_received: 20210102 (Jan 2 2021)
         d) Latest date_received: 20210531 (May 31 2021)
-	- MySQL Keywords clarification for WHERE clause
-		a) BETWEEN is inclusive of both start and end dates
+    - MySQL Keywords clarification for WHERE clause
+	a) BETWEEN is inclusive of both start and end dates
         b) STR_TO_DATE converts String (e.g. '20210101') to Date format for manipulation of dates
 
 3) Group the joined table based on the tiers
@@ -33,7 +33,7 @@ Note: For Buyer_Tier table, composite primary key (if exists) = (buyer_id, ds)
 4) Select the following information
     - tier column
     - average_delivery_time column
-		a) DATEDIFF finds the difference in days between date_received and order_date (date_received - order_date)
+	a) DATEDIFF finds the difference in days between date_received and order_date (date_received - order_date)
         b) Average all the delivery time based on tier
 */
 
