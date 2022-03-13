@@ -13,7 +13,7 @@ Note: For Buyer_Tier table, composite primary key (if exists) = (buyer_id, ds)
 
 1) Concatenate the relevant data from both tables Buyer_Tier and Delivery
     - Use inner join based on 2 conditions:
-		a) Same buyer_id (if join using only this might cause row explosion due to excessive matches; not primary key)
+	a) Same buyer_id (if join using only this might cause row explosion due to excessive matches; not primary key)
         b) Same ds and order_date (obtain buyer's tier during date of order for unique product)
 	- Left join could be used if buyers’ tier is calculated daily and ds exists for all possible dates to match Delivery table
     
